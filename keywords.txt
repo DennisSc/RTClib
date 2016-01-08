@@ -29,6 +29,7 @@ begin	KEYWORD2
 adjust	KEYWORD2
 isrunning	KEYWORD2
 now	KEYWORD2
+checkRollover	KEYWORD2
 readSqwPinMode	KEYWORD2
 writeSqwPinMode	KEYWORD2
 getTemperature	KEYWORD2
