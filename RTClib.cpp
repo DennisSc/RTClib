@@ -467,6 +467,20 @@ uint8_t RTC_DS3231::begin(void) {
     return true;
 }
 
+static uint8_t read_i2c_register(uint8_t addr, uint8_t reg) {
+  Wire.beginTransmission(addr);
+  Wire._I2C_WRITE((byte)reg);
+  Wire.endTransmission();
+
+  Wire.requestFrom(addr, (byte)1);
+  return Wire._I2C_READ();
+}
+
+#define DS3231_STATUSREG 0x0F
+bool RTC_DS3231::lostPower(void) {
+  return (read_i2c_register(DS3231_ADDRESS, DS3231_STATUSREG) >> 7);
+}
+
 uint8_t RTC_DS3231::isrunning(void)
 {
     Wire.beginTransmission(DS3231_ADDRESS);

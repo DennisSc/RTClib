@@ -128,6 +128,7 @@ class RTC_DS3231
 {
 public:
     uint8_t begin(void);
+    bool lostPower(void);
     void adjust(const DateTime& dt);
     uint8_t isrunning(void);
     DateTime now();
